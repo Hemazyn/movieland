@@ -3,14 +3,14 @@ import MovieCard from "./MovieCard";
 import SearchIcon from "./search.svg";
 import "./App.css";
 
-const API_URL = process.env.REACT_API_URL;
+const API_URL = "https://www.omdbapi.com?apikey=a35c5e42";
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    searchMovies("Batman");
+    searchMovies("james bond");
   }, []);
 
   const searchMovies = async (title) => {
@@ -20,10 +20,10 @@ const App = () => {
     setMovies(data.Search);
   };
 
+
   return (
     <div className="app">
       <h1>MovieLand</h1>
-
       <div className="search">
         <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder="Search for movies" />
         <img src={SearchIcon} alt="search" onClick={() => searchMovies(searchTerm)} />
